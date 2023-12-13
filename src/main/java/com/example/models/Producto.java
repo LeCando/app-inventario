@@ -101,6 +101,13 @@ public class Producto {
     public void setPrecioAsString(String precioStr) {
         this.precio = Double.parseDouble(precioStr);
     }
+    public String getStockAsString() {
+        return String.valueOf(this.stock);
+    }
+
+    public void setStockAsString(String stockStr) {
+        this.stock = Integer.parseInt(stockStr);
+    }
 
     public void ingresarDatos(){
 

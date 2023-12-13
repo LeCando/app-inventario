@@ -9,7 +9,18 @@ public class Viento extends Producto{
     public Viento() {
     }
 
+    public Viento(String nombre, String codigo, String marca, String color, String calidad, double precio, int stock, String tipo, String material) {
+        super(nombre, codigo, marca, color, calidad, precio, stock, tipo);
+        this.material = material;
+    }
 
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
 
     @Override
     public void ingresarDatos(){

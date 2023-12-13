@@ -46,8 +46,11 @@ public class InstrumentoView extends Composite<VerticalLayout> {
         grid.addColumn(Producto::getCodigo).setHeader("Codigo").setAutoWidth(true);
         grid.addColumn(Producto::getPrecio).setHeader("Precio").setAutoWidth(true);
         grid.addColumn(Producto::getStock).setHeader("Stock").setAutoWidth(true);
-        grid.addColumn(Producto::getPrecio).setHeader("Marca").setAutoWidth(true);
+        grid.addColumn(Producto::getMarca).setHeader("Marca").setAutoWidth(true);
         grid.addColumn(Producto::getCalidad).setHeader("Gama").setAutoWidth(true);
+        grid.addColumn(Producto::getTipo).setHeader("Tipo").setAutoWidth(true);
+        //grid.addColumn(Producto::get).setHeader("Material").setAutoWidth(true);
+        //grid.addColumn(Producto::get).setHeader("No Cuerdas").setAutoWidth(true);
 
         grid.addColumn(
                 new ComponentRenderer<>(producto -> {

@@ -1,7 +1,10 @@
 package com.example.application.views;
 
+import com.example.application.views.cuerda.CuerdaView;
 import com.example.application.views.instrumento.InstrumentoView;
 import com.example.application.views.nuevoinstrumento.NuevoInstrumentoView;
+import com.example.application.views.percusion.PercusionView;
+import com.example.application.views.viento.VientoView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
@@ -53,7 +56,16 @@ public class MainLayout extends AppLayout {
 
         nav.addItem(new SideNavItem("Instrumento", InstrumentoView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
         //nav.addItem(new SideNavItem("Nuevo Instrumento", NuevoInstrumentoView.class,
-         //       LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        //       LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+
+        nav.addItem(new SideNavItem("Cuerda", CuerdaView.class,
+               LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+
+        nav.addItem(new SideNavItem("Percusion", PercusionView.class,
+               LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+
+        nav.addItem(new SideNavItem("Viento", VientoView.class,
+                LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
         return nav;
     }
