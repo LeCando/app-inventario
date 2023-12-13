@@ -94,6 +94,14 @@ public class Producto {
         this.tipo = tipo;
     }
 
+    public String getPrecioAsString() {
+        return String.valueOf(this.precio);
+    }
+
+    public void setPrecioAsString(String precioStr) {
+        this.precio = Double.parseDouble(precioStr);
+    }
+
     public void ingresarDatos(){
 
         Scanner sc = new Scanner(System.in);

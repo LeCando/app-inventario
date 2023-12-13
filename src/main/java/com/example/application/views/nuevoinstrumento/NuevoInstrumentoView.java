@@ -4,6 +4,7 @@ import com.example.Utils.Util;
 import com.example.application.views.MainLayout;
 import com.example.models.Producto;
 import com.vaadin.flow.component.Composite;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -15,6 +16,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
+import com.vaadin.flow.data.binder.Binder;
+import com.vaadin.flow.data.validator.RegexpValidator;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +63,12 @@ public class NuevoInstrumentoView extends Composite<VerticalLayout> {
         layoutRow2.getStyle().set("flex-grow", "1");
         textField3.setLabel("Precio");
         textField3.setWidth("380px");
+        Binder<Producto> binder = new Binder<>(Producto.class);
+
+        binder.forField(textField3)
+                .withValidator(new RegexpValidator("Debe ser un número", "^[0-9]*\\.?[0-9]+$"))
+                .bind(Producto::getPrecioAsString, Producto::setPrecioAsString);
+
         textField4.setLabel("Stock");
         textField4.setWidth("380px");
         layoutRow3.setWidthFull();
@@ -72,7 +82,7 @@ public class NuevoInstrumentoView extends Composite<VerticalLayout> {
         textField6.setWidth("380px");
         comboBox2.setLabel("Calidad");
         comboBox2.setWidth("150px");
-        setComboBoxSampleData(comboBox2);
+        setComboBox2SampleData(comboBox2);
         layoutRow4.setWidthFull();
         getContent().setFlexGrow(1.0, layoutRow4);
         layoutRow4.addClassName(Gap.MEDIUM);
@@ -84,7 +94,8 @@ public class NuevoInstrumentoView extends Composite<VerticalLayout> {
 
         guardar.addClickListener(event -> {
             // Obtener los valores de los campos y guardar en la lista de productos
-            //String tipo = (String) comboBox.getValue();
+            SampleItem selectedItem = (SampleItem) comboBox.getValue();
+            String tipo = selectedItem != null ? selectedItem.label() : null;
             String nombre = textField.getValue();
             String codigo = textField2.getValue();
             double precio = Float.parseFloat(textField3.getValue());
@@ -98,7 +109,7 @@ public class NuevoInstrumentoView extends Composite<VerticalLayout> {
             Producto producto1 = new Producto();
 
             // Validar que los campos no estén vacíos antes de guardar
-            //producto1.setTipo(tipo);
+            producto1.setTipo(tipo);
             producto1.setNombre(nombre);
             producto1.setCodigo(codigo);
             producto1.setPrecio(precio);
@@ -115,6 +126,9 @@ public class NuevoInstrumentoView extends Composite<VerticalLayout> {
 
         buttonSecondary.setText("Cancelar");
         buttonSecondary.setWidth("min-content");
+
+        buttonSecondary.addClickListener(e -> UI.getCurrent().navigate("instrumento"));
+
         getContent().add(comboBox);
         getContent().add(layoutRow);
         layoutRow.add(textField);

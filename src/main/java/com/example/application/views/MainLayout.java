@@ -52,8 +52,8 @@ public class MainLayout extends AppLayout {
         SideNav nav = new SideNav();
 
         nav.addItem(new SideNavItem("Instrumento", InstrumentoView.class, LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
-        nav.addItem(new SideNavItem("Nuevo Instrumento", NuevoInstrumentoView.class,
-                LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        //nav.addItem(new SideNavItem("Nuevo Instrumento", NuevoInstrumentoView.class,
+         //       LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
         return nav;
     }
