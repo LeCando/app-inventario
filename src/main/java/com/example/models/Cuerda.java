@@ -14,8 +14,8 @@ public class Cuerda extends Producto {
     }
 
     public Cuerda(String nombre, String codigo, String marca, String color,
-                  String calidad, double precio, int stock, int cantidadCuerdas, String tipo) {
-        super(nombre, codigo, marca, color, calidad, precio, stock, tipo);
+                  String calidad, double precio, int stock, int cantidadCuerdas, String tipo, String categoria) {
+        super(nombre, codigo, marca, color, calidad, precio, stock, tipo, categoria);
         this.cantidadCuerdas = cantidadCuerdas;
         this.tipo = tipo;
     }

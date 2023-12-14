@@ -5,16 +5,19 @@ import com.example.application.views.MainLayout;
 import com.example.application.views.nuevoinstrumento.NuevoInstrumentoView;
 import com.example.models.Cuerda;
 import com.example.models.Percusion;
+import com.example.models.Viento;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.dependency.Uses;
 import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
@@ -44,6 +47,7 @@ public class CuerdaView extends Composite<VerticalLayout> {
         HorizontalLayout layoutRow5 = new HorizontalLayout();
         Button guardar = new Button();
         Button buttonSecondary = new Button();
+
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         layoutColumn2.setWidth("100%");
@@ -55,8 +59,12 @@ public class CuerdaView extends Composite<VerticalLayout> {
         layoutRow.getStyle().set("flex-grow", "1");
         textField.setLabel("Nombre");
         textField.setWidth("380px");
+        textField.setRequired(true);
+        textField.setErrorMessage("Campo Obligatorio");
         textField2.setLabel("Codigo");
         textField2.setWidth("380px");
+        textField2.setRequired(true);
+        textField2.setErrorMessage("Campo Obligatorio");
         layoutRow2.setWidthFull();
         layoutColumn2.setFlexGrow(1.0, layoutRow2);
         layoutRow2.addClassName(Gap.MEDIUM);
@@ -64,8 +72,12 @@ public class CuerdaView extends Composite<VerticalLayout> {
         layoutRow2.getStyle().set("flex-grow", "1");
         textField3.setLabel("Precio");
         textField3.setWidth("380px");
+        textField3.setRequired(true);
+        textField3.setErrorMessage("Campo Obligatorio");
         textField4.setLabel("Stock");
         textField4.setWidth("380px");
+        textField4.setRequired(true);
+        textField4.setErrorMessage("Campo Obligatorio");
         layoutRow3.setWidthFull();
         layoutColumn2.setFlexGrow(1.0, layoutRow3);
         layoutRow3.addClassName(Gap.MEDIUM);
@@ -73,23 +85,37 @@ public class CuerdaView extends Composite<VerticalLayout> {
         layoutRow3.getStyle().set("flex-grow", "1");
         textField5.setLabel("Marca");
         textField5.setWidth("380px");
+        textField5.setRequired(true);
+        textField5.setErrorMessage("Campo Obligatorio");
         textField6.setLabel("Color");
         textField6.setWidth("380px");
+        textField6.setRequired(true);
+        textField6.setErrorMessage("Campo Obligatorio");
         layoutRow4.setWidthFull();
         layoutColumn2.setFlexGrow(1.0, layoutRow4);
         layoutRow4.addClassName(Gap.MEDIUM);
         layoutRow4.setWidth("100%");
         layoutRow4.getStyle().set("flex-grow", "1");
+
         comboBox.setLabel("Gama");
         comboBox.setWidth("380px");
         comboBox.setHeight("70px");
         setComboBoxSampleData(comboBox);
+        comboBox.setRequired(true);
+        comboBox.setErrorMessage("Campo Obligatorio");
+
         comboBox2.setLabel("No Cuerdas");
         comboBox2.setWidth("380px");
         setComboBox2SampleData(comboBox2);
+        comboBox2.setRequired(true);
+        comboBox2.setErrorMessage("Campo Obligatorio");
+
         comboBox3.setLabel("Tipo");
         comboBox3.setWidth("380px");
         setComboBox3SampleData(comboBox3);
+        comboBox3.setRequired(true);
+        comboBox3.setErrorMessage("Campo Obligatorio");
+
         layoutRow5.setWidthFull();
         layoutColumn2.setFlexGrow(1.0, layoutRow5);
         layoutRow5.addClassName(Gap.MEDIUM);
@@ -101,9 +127,12 @@ public class CuerdaView extends Composite<VerticalLayout> {
         guardar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 
         guardar.addClickListener(event -> {
+
+            if (!textField.isEmpty() && !textField2.isEmpty() && !textField3.isEmpty()
+                    && !textField4.isEmpty() && !textField5.isEmpty() && !textField6.isEmpty()
+                    && !comboBox.isEmpty() && !comboBox2.isEmpty() && !comboBox3.isEmpty()
+            ){
             // Obtener los valores de los campos y guardar en la lista de productos
-
-
 
             String nombre = textField.getValue();
             String codigo = textField2.getValue();
@@ -137,6 +166,11 @@ public class CuerdaView extends Composite<VerticalLayout> {
 
             // Navegar a la vista de productos después de guardar
             getUI().ifPresent(ui -> ui.navigate("instrumento"));
+
+            }else{
+                Notification.show("Debe llenar todos los campos");
+            }
+
         });
 
         buttonSecondary.setText("Cancelar");

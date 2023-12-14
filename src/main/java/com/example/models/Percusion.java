@@ -12,8 +12,8 @@ public class Percusion extends Producto{
     }
 
     public Percusion(String nombre, String codigo, String marca, String color,
-                     String calidad, double precio, int stock, String tipo, String material) {
-        super(nombre, codigo, marca, color, calidad, precio, stock, tipo);
+                     String calidad, double precio, int stock, String tipo, String material, String categoria) {
+        super(nombre, codigo, marca, color, calidad, precio, stock, tipo, categoria);
         this.tipo = tipo;
         this.material = material;
     }

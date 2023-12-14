@@ -12,6 +12,7 @@ public class Producto {
     public   String color;
     public   String calidad;
     public String tipo;
+    public String categoria;
 
 
 
@@ -19,7 +20,8 @@ public class Producto {
 
     }
 
-    public Producto(String nombre, String codigo, String marca, String color, String calidad, double precio, int stock, String tipo) {
+    public Producto(String nombre, String codigo, String marca, String color,
+                    String calidad, double precio, int stock, String tipo, String categoria) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.precio = precio;
@@ -28,6 +30,7 @@ public class Producto {
         this.color = color;
         this.calidad = calidad;
         this.tipo = tipo;
+        this.categoria = categoria;
     }
 
     public String getNombre() {
@@ -107,6 +110,14 @@ public class Producto {
 
     public void setStockAsString(String stockStr) {
         this.stock = Integer.parseInt(stockStr);
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public void ingresarDatos(){

@@ -58,14 +58,14 @@ public class MainLayout extends AppLayout {
         //nav.addItem(new SideNavItem("Nuevo Instrumento", NuevoInstrumentoView.class,
         //       LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
-        nav.addItem(new SideNavItem("Cuerda", CuerdaView.class,
-               LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        //nav.addItem(new SideNavItem("Cuerda", CuerdaView.class,
+          //     LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
-        nav.addItem(new SideNavItem("Percusion", PercusionView.class,
-               LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        //nav.addItem(new SideNavItem("Percusion", PercusionView.class,
+          //     LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
-        nav.addItem(new SideNavItem("Viento", VientoView.class,
-                LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
+        //nav.addItem(new SideNavItem("Viento", VientoView.class,
+          //      LineAwesomeIcon.PENCIL_RULER_SOLID.create()));
 
         return nav;
     }

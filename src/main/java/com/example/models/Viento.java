@@ -9,8 +9,9 @@ public class Viento extends Producto{
     public Viento() {
     }
 
-    public Viento(String nombre, String codigo, String marca, String color, String calidad, double precio, int stock, String tipo, String material) {
-        super(nombre, codigo, marca, color, calidad, precio, stock, tipo);
+    public Viento(String nombre, String codigo, String marca, String color, String calidad, double precio,
+                  int stock, String tipo, String material, String categoria) {
+        super(nombre, codigo, marca, color, calidad, precio, stock, tipo, categoria);
         this.material = material;
     }
 
